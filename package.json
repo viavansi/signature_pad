@@ -1,13 +1,8 @@
 {
-  "name": "signature_pad",
-  "description": "Library for drawing smooth signatures.",
+  "name": "signature_pad_viafirma",
+  "description": "Fork of signature_pad. Library for drawing smooth signatures.",
   "version": "3.0.0-beta.3",
-  "homepage": "https://github.com/szimek/signature_pad",
-  "author": {
-    "name": "Szymon Nowak",
-    "email": "szimek@gmail.com",
-    "url": "https://github.com/szimek"
-  },
+  "homepage": "https://github.com/viafirma/signature_pad_viafirma",
   "license": "MIT",
   "source": "src/signature_pad.ts",
   "dev:main": "dist/signature_pad.js",
@@ -26,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/szimek/signature_pad.git"
+    "url": "https://github.com/viafirma/signature_pad_viafirma.git"
   },
   "files": [
     "src",
