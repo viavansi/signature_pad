@@ -1,6 +1,6 @@
 /*!
  * Signature Pad v3.0.0-beta.3 | https://github.com/szimek/signature_pad
- * (c) 2018 Szymon Nowak | Released under the MIT license
+ * (c) 2019 Szymon Nowak | Released under the MIT license
  */
 
 (function (global, factory) {
@@ -200,6 +200,7 @@
           this.backgroundColor = options.backgroundColor || 'rgba(0,0,0,0)';
           this.onBegin = options.onBegin;
           this.onEnd = options.onEnd;
+          this.onAddPoint = options.onAddPoint;
           this._ctx = canvas.getContext('2d');
           this.clear();
           this.on();
@@ -314,6 +315,9 @@
           var color = lastPointGroup.color;
           if (!lastPoint || !(lastPoint && isLastPointTooClose)) {
               var curve = this._addPoint(point);
+              if (typeof this.onAddPoint === "function") {
+                  this.onAddPoint(event);
+              }
               if (!lastPoint) {
                   this._drawDot({ color: color, point: point });
               }
@@ -417,7 +421,7 @@
               y += 3 * uu * t * curve.control1.y;
               y += 3 * u * tt * curve.control2.y;
               y += ttt * curve.endPoint.y;
-              var width = curve.startWidth + ttt * widthDelta;
+              var width = Math.min(curve.startWidth + ttt * widthDelta, this.maxWidth);
               this._drawCurveSegment(x, y, width);
           }
           ctx.closePath();
